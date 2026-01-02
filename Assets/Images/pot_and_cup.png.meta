@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9bc6fb2e2177a63459c791e9ccd3be9b
+guid: 93d32094d3ab89e41a0bcd385350fc63
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -110,12 +110,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Gemini_Generated_Image_5dz5sd5dz5sd5dz5 (1)_0
+      name: pot_and_cup_0
       rect:
         serializedVersion: 2
-        x: 124
+        x: 125
         y: 1020
-        width: 543
+        width: 542
         height: 408
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -124,14 +124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bd4daa098f8831148ac799dc08eb1ad6
-      internalID: 150056439
+      spriteID: 962e7411ca272ef4c8fc72348d59bc75
+      internalID: 765644877
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Gemini_Generated_Image_5dz5sd5dz5sd5dz5 (1)_1
+      name: pot_and_cup_1
       rect:
         serializedVersion: 2
         x: 792
@@ -145,20 +145,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 07010b61f8c57254da2c97b94a379212
-      internalID: -544245470
+      spriteID: d5ff48a1fca58bf49ac96e76e1762cf8
+      internalID: 393393269
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Gemini_Generated_Image_5dz5sd5dz5sd5dz5 (1)_2
+      name: pot_and_cup_2
       rect:
         serializedVersion: 2
         x: 1458
         y: 1020
         width: 542
-        height: 408
+        height: 409
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,20 +166,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 179d21d7222573843ab7d5824892d5d5
-      internalID: 564680820
+      spriteID: cadc40e3d684eed42968f7c85932d118
+      internalID: -2130739882
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Gemini_Generated_Image_5dz5sd5dz5sd5dz5 (1)_3
+      name: pot_and_cup_3
       rect:
         serializedVersion: 2
         x: 2118
         y: 1020
-        width: 545
-        height: 408
+        width: 542
+        height: 409
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,20 +187,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 39e02dfdab06ddf40a507daaeffbbca6
-      internalID: -933117109
+      spriteID: 7ab95d8d28ffd0240be904d490811e19
+      internalID: -913675368
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Gemini_Generated_Image_5dz5sd5dz5sd5dz5 (1)_4
+      name: pot_and_cup_4
       rect:
         serializedVersion: 2
-        x: 123
-        y: 532
-        width: 545
-        height: 392
+        x: 124
+        y: 529
+        width: 544
+        height: 395
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -208,20 +208,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a577111a6eda2fc49aacd40492d4c08c
-      internalID: 737526336
+      spriteID: 963c66b2e7ae82d42b025889102c3b4a
+      internalID: -1400528520
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Gemini_Generated_Image_5dz5sd5dz5sd5dz5 (1)_5
+      name: pot_and_cup_5
       rect:
         serializedVersion: 2
-        x: 787
-        y: 532
-        width: 545
-        height: 392
+        x: 786
+        y: 528
+        width: 546
+        height: 396
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -229,20 +229,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 415c99aef8cb3754d8e7057114952d66
-      internalID: 245744987
+      spriteID: 42a4af031bc1a67489b6d4c1fd954264
+      internalID: 259289018
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Gemini_Generated_Image_5dz5sd5dz5sd5dz5 (1)_6
+      name: pot_and_cup_6
       rect:
         serializedVersion: 2
-        x: 1458
+        x: 1457
         y: 532
-        width: 545
-        height: 392
+        width: 546
+        height: 393
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -250,20 +250,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2be7e4bd702d6f242873cb327293e1d0
-      internalID: 866648328
+      spriteID: 1447c83eb5fcd1e459af2fc1f2a7240c
+      internalID: 437357600
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Gemini_Generated_Image_5dz5sd5dz5sd5dz5 (1)_7
+      name: pot_and_cup_7
       rect:
         serializedVersion: 2
         x: 2136
-        y: 533
+        y: 532
         width: 543
-        height: 392
+        height: 393
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -271,38 +271,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 67444520663d1094d93e259c13806fd2
-      internalID: -1922361264
+      spriteID: aee0bbe6649227a4d9bb91ed718425b9
+      internalID: 1102944162
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Gemini_Generated_Image_5dz5sd5dz5sd5dz5 (1)_8
+      name: pot_and_cup_8
       rect:
         serializedVersion: 2
-        x: 81
-        y: 78
-        width: 390
-        height: 354
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b30427cace27d504c9626b58bf073f44
-      internalID: 655907604
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gemini_Generated_Image_5dz5sd5dz5sd5dz5 (1)_9
-      rect:
-        serializedVersion: 2
-        x: 534
+        x: 80
         y: 78
         width: 391
         height: 354
@@ -313,38 +292,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0c3d00abb5d6d7441969aab448c30088
-      internalID: -992264462
+      spriteID: 786cedc443c3d70429704c79c26dda76
+      internalID: 1199956049
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Gemini_Generated_Image_5dz5sd5dz5sd5dz5 (1)_10
+      name: pot_and_cup_9
       rect:
         serializedVersion: 2
-        x: 987
-        y: 78
-        width: 389
-        height: 354
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6cc584896e6e44948a98a6fd6849aadf
-      internalID: -271122074
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gemini_Generated_Image_5dz5sd5dz5sd5dz5 (1)_11
-      rect:
-        serializedVersion: 2
-        x: 1438
+        x: 533
         y: 78
         width: 393
         height: 356
@@ -355,38 +313,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a5d62bda4ee459244a36879b19953a37
-      internalID: -1505565949
+      spriteID: e003579faa5fd5e44abd7502d1243a79
+      internalID: 1346270261
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Gemini_Generated_Image_5dz5sd5dz5sd5dz5 (1)_12
+      name: pot_and_cup_10
       rect:
         serializedVersion: 2
-        x: 1891
-        y: 78
-        width: 391
-        height: 355
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 72e54e7cebcbbb94b862879a7aaec572
-      internalID: -365877723
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gemini_Generated_Image_5dz5sd5dz5sd5dz5 (1)_13
-      rect:
-        serializedVersion: 2
-        x: 2345
+        x: 987
         y: 78
         width: 390
         height: 356
@@ -397,8 +334,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 67acdaf376280e54597279fb93e869b2
-      internalID: 1554879657
+      spriteID: 03c3d6471899a014088a6e1a0db764b2
+      internalID: 1107072329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pot_and_cup_11
+      rect:
+        serializedVersion: 2
+        x: 1439
+        y: 78
+        width: 392
+        height: 356
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ebefe0062588da48867d87f275efe80
+      internalID: 1192989350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pot_and_cup_12
+      rect:
+        serializedVersion: 2
+        x: 1891
+        y: 78
+        width: 391
+        height: 356
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be8ee6fe5ef37c24da540cbb4b173db6
+      internalID: 509435607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pot_and_cup_13
+      rect:
+        serializedVersion: 2
+        x: 2345
+        y: 78
+        width: 390
+        height: 357
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b68e148e96972a34d99d8d801c6beb8a
+      internalID: -1983597450
       vertices: []
       indices: 
       edges: []
@@ -414,20 +414,20 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Gemini_Generated_Image_5dz5sd5dz5sd5dz5 (1)_0: 150056439
-      Gemini_Generated_Image_5dz5sd5dz5sd5dz5 (1)_1: -544245470
-      Gemini_Generated_Image_5dz5sd5dz5sd5dz5 (1)_10: -271122074
-      Gemini_Generated_Image_5dz5sd5dz5sd5dz5 (1)_11: -1505565949
-      Gemini_Generated_Image_5dz5sd5dz5sd5dz5 (1)_12: -365877723
-      Gemini_Generated_Image_5dz5sd5dz5sd5dz5 (1)_13: 1554879657
-      Gemini_Generated_Image_5dz5sd5dz5sd5dz5 (1)_2: 564680820
-      Gemini_Generated_Image_5dz5sd5dz5sd5dz5 (1)_3: -933117109
-      Gemini_Generated_Image_5dz5sd5dz5sd5dz5 (1)_4: 737526336
-      Gemini_Generated_Image_5dz5sd5dz5sd5dz5 (1)_5: 245744987
-      Gemini_Generated_Image_5dz5sd5dz5sd5dz5 (1)_6: 866648328
-      Gemini_Generated_Image_5dz5sd5dz5sd5dz5 (1)_7: -1922361264
-      Gemini_Generated_Image_5dz5sd5dz5sd5dz5 (1)_8: 655907604
-      Gemini_Generated_Image_5dz5sd5dz5sd5dz5 (1)_9: -992264462
+      pot_and_cup_0: 765644877
+      pot_and_cup_1: 393393269
+      pot_and_cup_10: 1107072329
+      pot_and_cup_11: 1192989350
+      pot_and_cup_12: 509435607
+      pot_and_cup_13: -1983597450
+      pot_and_cup_2: -2130739882
+      pot_and_cup_3: -913675368
+      pot_and_cup_4: -1400528520
+      pot_and_cup_5: 259289018
+      pot_and_cup_6: 437357600
+      pot_and_cup_7: 1102944162
+      pot_and_cup_8: 1199956049
+      pot_and_cup_9: 1346270261
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
