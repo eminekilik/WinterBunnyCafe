@@ -253,7 +253,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 433851246, guid: b58f69f16b14c3e4bab3e57a84b8b23f, type: 3}
+  m_Sprite: {fileID: -379156661, guid: b1c3cb6ac4a48db46894f09552ec1fa6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -273,7 +273,7 @@ Transform:
   m_GameObject: {fileID: 58640892}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.75, y: -1.7, z: 0}
+  m_LocalPosition: {x: 4.83, y: -1.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -316,7 +316,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 5.561453, y: 2.2}
+    oldSize: {x: 5.875, y: 2.3249998}
     newSize: {x: 5.4304414, y: 4.08}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -398,13 +398,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pot: {fileID: 58640897}
   spriteRenderer: {fileID: 58640893}
-  emptyPot: {fileID: 433851246, guid: b58f69f16b14c3e4bab3e57a84b8b23f, type: 3}
-  milkRaw: {fileID: 1530982274, guid: b58f69f16b14c3e4bab3e57a84b8b23f, type: 3}
+  emptyPot: {fileID: -379156661, guid: b1c3cb6ac4a48db46894f09552ec1fa6, type: 3}
+  milkRaw: {fileID: -2090266974, guid: b1c3cb6ac4a48db46894f09552ec1fa6, type: 3}
   chocolateRaw: {fileID: -913675368, guid: 93d32094d3ab89e41a0bcd385350fc63, type: 3}
-  milkChocolateRaw: {fileID: -323434171, guid: b58f69f16b14c3e4bab3e57a84b8b23f, type: 3}
-  hotMilk: {fileID: 163062554, guid: b58f69f16b14c3e4bab3e57a84b8b23f, type: 3}
-  meltedChocolate: {fileID: -1305636197, guid: b58f69f16b14c3e4bab3e57a84b8b23f, type: 3}
-  hotChocolate: {fileID: -1305636197, guid: b58f69f16b14c3e4bab3e57a84b8b23f, type: 3}
+  milkChocolateRaw: {fileID: 1659581254, guid: b1c3cb6ac4a48db46894f09552ec1fa6, type: 3}
+  hotMilk: {fileID: 127290996, guid: b1c3cb6ac4a48db46894f09552ec1fa6, type: 3}
+  meltedChocolate: {fileID: 883763156, guid: b1c3cb6ac4a48db46894f09552ec1fa6, type: 3}
+  hotChocolate: {fileID: 883763156, guid: b1c3cb6ac4a48db46894f09552ec1fa6, type: 3}
   burnt: {fileID: 1102944162, guid: 93d32094d3ab89e41a0bcd385350fc63, type: 3}
 --- !u!1 &199192280
 GameObject:
