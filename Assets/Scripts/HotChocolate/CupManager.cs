@@ -23,4 +23,21 @@ public class CupManager : MonoBehaviour
         }
         return null;
     }
+
+    public Cup GetFirstFilledCupWithoutMarshmallow()
+    {
+        foreach (CupSlot slot in slots)
+        {
+            if (!slot.isOccupied) continue;
+
+            Cup cup = slot.GetCup();
+            if (cup == null) continue;
+
+            if (cup.isFilled && !cup.hasMarshmallow)
+                return cup;
+        }
+
+        return null;
+    }
+
 }

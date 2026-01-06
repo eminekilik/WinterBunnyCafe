@@ -11,10 +11,21 @@ public class Customer : MonoBehaviour
     bool hasArrived;
     bool leaving;
 
+    CustomerPatienceSlider patience;
+
+    public OrderType wantedOrder;
+
+    [Header("Order Icon")]
+    public SpriteRenderer orderIconRenderer;
+    public Sprite hotChocolateIcon;
+    public Sprite marshmallowHotChocolateIcon;
+
     void Start()
     {
         // Spawn olduðu yer = çýkýþ noktasý
         exitTarget = transform.position;
+
+        patience = GetComponent<CustomerPatienceSlider>();
 
         targetSlot = CustomerSlotManager.Instance.GetRandomFreeSlot();
         if (targetSlot == null)
@@ -29,7 +40,7 @@ public class Customer : MonoBehaviour
 
     void Update()
     {
-        // Çýkýþ
+        // Çýkýþa doðru yürüme
         if (leaving)
         {
             transform.position = Vector3.MoveTowards(
@@ -44,9 +55,10 @@ public class Customer : MonoBehaviour
             return;
         }
 
-        // Slotuna yürüyüþ
+        // Slotuna ulaþtýysa bekle
         if (hasArrived) return;
 
+        // Slotuna yürü
         transform.position = Vector3.MoveTowards(
             transform.position,
             targetSlot.position,
@@ -57,6 +69,32 @@ public class Customer : MonoBehaviour
         {
             hasArrived = true;
             orderBubble.SetActive(true);
+
+            // ?? sipariþ belirle
+            wantedOrder = Random.value > 0.5f
+                ? OrderType.HotChocolate
+                : OrderType.HotChocolateWithMarshmallow;
+
+            UpdateOrderIcon();
+
+            if (patience != null)
+                patience.StartPatience();
+        }
+    }
+
+    void UpdateOrderIcon()
+    {
+        if (orderIconRenderer == null) return;
+
+        switch (wantedOrder)
+        {
+            case OrderType.HotChocolate:
+                orderIconRenderer.sprite = hotChocolateIcon;
+                break;
+
+            case OrderType.HotChocolateWithMarshmallow:
+                orderIconRenderer.sprite = marshmallowHotChocolateIcon;
+                break;
         }
     }
 
@@ -65,9 +103,41 @@ public class Customer : MonoBehaviour
         return hasArrived && !leaving;
     }
 
-    public void ServeAndLeave()
+    // ?? Kupayý verince çaðrýlýr
+    public void TryServe(Cup cup)
+    {
+        if (!CanBeServed()) return;
+
+        // ? yanlýþ ürün
+        if (cup.GetOrderType() != wantedOrder)
+        {
+            Debug.Log("Yanlýþ sipariþ!");
+            return;
+        }
+
+        // ? doðru ürün
+        orderBubble.SetActive(false);
+
+        if (patience != null)
+            patience.StopPatience();
+
+        leaving = true;
+
+        CustomerManager.Instance.RemoveCustomer(this);
+        CustomerSlotManager.Instance.FreeSlot(targetSlot);
+
+        // kupayý temizle
+        if (cup.currentSlot != null)
+            cup.currentSlot.Clear();
+
+        Destroy(cup.gameObject);
+    }
+
+    // ?? Sabýr bitince çaðrýlýr
+    public void LeaveBecauseOfAnger()
     {
         orderBubble.SetActive(false);
+
         leaving = true;
 
         CustomerManager.Instance.RemoveCustomer(this);

@@ -100,7 +100,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   emptySprite: {fileID: 1199956049, guid: 93d32094d3ab89e41a0bcd385350fc63, type: 3}
   filledSprite: {fileID: 1346270261, guid: 93d32094d3ab89e41a0bcd385350fc63, type: 3}
+  marshmallowSprite: {fileID: 1192989350, guid: 93d32094d3ab89e41a0bcd385350fc63, type: 3}
   isFilled: 0
+  hasMarshmallow: 0
+  currentSlot: {fileID: 0}
 --- !u!61 &8283389640939252829
 BoxCollider2D:
   m_ObjectHideFlags: 0
