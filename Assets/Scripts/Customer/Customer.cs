@@ -118,6 +118,12 @@ public class Customer : MonoBehaviour
         // ? doðru ürün
         orderBubble.SetActive(false);
 
+        MoneyManager.Instance.AddMoneyWithEffect(
+    wantedOrder,
+    transform.position
+);
+
+
         if (patience != null)
             patience.StopPatience();
 
