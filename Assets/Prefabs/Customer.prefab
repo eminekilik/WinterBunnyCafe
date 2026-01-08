@@ -447,6 +447,8 @@ MonoBehaviour:
   orderIconRenderer: {fileID: 3192706135873576928}
   hotChocolateIcon: {fileID: 655907604, guid: 9bc6fb2e2177a63459c791e9ccd3be9b, type: 3}
   marshmallowHotChocolateIcon: {fileID: -1505565949, guid: 9bc6fb2e2177a63459c791e9ccd3be9b, type: 3}
+  creamHotChocolateIcon: {fileID: 553886946, guid: d7227dd7aec32f64da8e525fb97bbf6d, type: 3}
+  creamChocolateHotChocolateIcon: {fileID: -988674332, guid: 95602b8c34c03db479edddfd69de0421, type: 3}
 --- !u!114 &8611931824677696844
 MonoBehaviour:
   m_ObjectHideFlags: 0

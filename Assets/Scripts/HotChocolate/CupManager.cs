@@ -33,7 +33,50 @@ public class CupManager : MonoBehaviour
             Cup cup = slot.GetCup();
             if (cup == null) continue;
 
-            if (cup.isFilled && !cup.hasMarshmallow)
+            if (
+                cup.isFilled &&
+                !cup.hasMarshmallow &&
+                !cup.hasCream &&              // ?? KRÝTÝK
+                !cup.hasChocolateChips
+            )
+                return cup;
+        }
+
+        return null;
+    }
+
+
+    public Cup GetFirstFilledCupWithoutCream()
+    {
+        foreach (CupSlot slot in slots)
+        {
+            if (!slot.isOccupied) continue;
+
+            Cup cup = slot.GetCup();
+            if (cup == null) continue;
+
+            if (
+                cup.isFilled &&
+                !cup.hasCream &&
+                !cup.hasMarshmallow   // ?? KRÝTÝK KONTROL
+            )
+                return cup;
+        }
+
+        return null;
+    }
+
+
+    public Cup GetFirstFilledCupWithCreamWithoutChocolate()
+    {
+        foreach (CupSlot slot in slots)
+        {
+            if (!slot.isOccupied) continue;
+
+            Cup cup = slot.GetCup();
+            if (cup == null) continue;
+
+            if (cup.isFilled && cup.hasCream && !cup.hasChocolateChips)
                 return cup;
         }
 

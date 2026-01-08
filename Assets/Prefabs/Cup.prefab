@@ -104,6 +104,10 @@ MonoBehaviour:
   isFilled: 0
   hasMarshmallow: 0
   currentSlot: {fileID: 0}
+  creamSprite: {fileID: 553886946, guid: d7227dd7aec32f64da8e525fb97bbf6d, type: 3}
+  chocolateChipSprite: {fileID: -988674332, guid: 95602b8c34c03db479edddfd69de0421, type: 3}
+  hasCream: 0
+  hasChocolateChips: 0
 --- !u!61 &8283389640939252829
 BoxCollider2D:
   m_ObjectHideFlags: 0

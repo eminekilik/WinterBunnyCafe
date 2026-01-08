@@ -15,10 +15,12 @@ public class Customer : MonoBehaviour
 
     public OrderType wantedOrder;
 
-    [Header("Order Icon")]
+    [Header("Order Icons")]
     public SpriteRenderer orderIconRenderer;
     public Sprite hotChocolateIcon;
     public Sprite marshmallowHotChocolateIcon;
+    public Sprite creamHotChocolateIcon;
+    public Sprite creamChocolateHotChocolateIcon;
 
     void Start()
     {
@@ -70,16 +72,28 @@ public class Customer : MonoBehaviour
             hasArrived = true;
             orderBubble.SetActive(true);
 
-            // ?? sipariþ belirle
-            wantedOrder = Random.value > 0.5f
-                ? OrderType.HotChocolate
-                : OrderType.HotChocolateWithMarshmallow;
-
+            wantedOrder = GetRandomOrder();
             UpdateOrderIcon();
 
             if (patience != null)
                 patience.StartPatience();
         }
+    }
+
+    OrderType GetRandomOrder()
+    {
+        float r = Random.value;
+
+        if (r < 0.25f)
+            return OrderType.HotChocolate;
+
+        if (r < 0.5f)
+            return OrderType.HotChocolateWithMarshmallow;
+
+        if (r < 0.75f)
+            return OrderType.HotChocolateWithCream;
+
+        return OrderType.HotChocolateWithCreamAndChocolate;
     }
 
     void UpdateOrderIcon()
@@ -95,6 +109,14 @@ public class Customer : MonoBehaviour
             case OrderType.HotChocolateWithMarshmallow:
                 orderIconRenderer.sprite = marshmallowHotChocolateIcon;
                 break;
+
+            case OrderType.HotChocolateWithCream:
+                orderIconRenderer.sprite = creamHotChocolateIcon;
+                break;
+
+            case OrderType.HotChocolateWithCreamAndChocolate:
+                orderIconRenderer.sprite = creamChocolateHotChocolateIcon;
+                break;
         }
     }
 
@@ -103,26 +125,24 @@ public class Customer : MonoBehaviour
         return hasArrived && !leaving;
     }
 
-    // ?? Kupayý verince çaðrýlýr
     public void TryServe(Cup cup)
     {
         if (!CanBeServed()) return;
 
-        // ? yanlýþ ürün
+        // yanlýþ ürün
         if (cup.GetOrderType() != wantedOrder)
         {
             Debug.Log("Yanlýþ sipariþ!");
             return;
         }
 
-        // ? doðru ürün
+        // doðru ürün
         orderBubble.SetActive(false);
 
         MoneyManager.Instance.AddMoneyWithEffect(
-    wantedOrder,
-    transform.position
-);
-
+            wantedOrder,
+            transform.position
+        );
 
         if (patience != null)
             patience.StopPatience();
@@ -132,14 +152,12 @@ public class Customer : MonoBehaviour
         CustomerManager.Instance.RemoveCustomer(this);
         CustomerSlotManager.Instance.FreeSlot(targetSlot);
 
-        // kupayý temizle
         if (cup.currentSlot != null)
             cup.currentSlot.Clear();
 
         Destroy(cup.gameObject);
     }
 
-    // ?? Sabýr bitince çaðrýlýr
     public void LeaveBecauseOfAnger()
     {
         orderBubble.SetActive(false);

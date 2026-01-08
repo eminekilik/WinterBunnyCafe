@@ -13,6 +13,8 @@ public class MoneyManager : MonoBehaviour
     [Header("Prices")]
     public int hotChocolatePrice = 10;
     public int marshmallowHotChocolatePrice = 15;
+    public int creamHotChocolatePrice = 18;
+    public int creamChocolateHotChocolatePrice = 22;
 
     [Header("UI")]
     public TextMeshProUGUI moneyText;
@@ -33,29 +35,35 @@ public class MoneyManager : MonoBehaviour
 
     public void AddMoneyWithEffect(OrderType orderType, Vector3 worldPos)
     {
-        // Para miktarý belirlenir ama EKLENMEZ
+        int moneyToAdd = 0;
+
         switch (orderType)
         {
             case OrderType.HotChocolate:
-                pendingMoney = hotChocolatePrice;
+                moneyToAdd = hotChocolatePrice;
                 break;
 
             case OrderType.HotChocolateWithMarshmallow:
-                pendingMoney = marshmallowHotChocolatePrice;
+                moneyToAdd = marshmallowHotChocolatePrice;
+                break;
+
+            case OrderType.HotChocolateWithCream:
+                moneyToAdd = creamHotChocolatePrice;
+                break;
+
+            case OrderType.HotChocolateWithCreamAndChocolate:
+                moneyToAdd = creamChocolateHotChocolatePrice;
                 break;
         }
 
-        // Sadece animasyon baþlar
         GameObject coin = Instantiate(coinPrefab, moneyTarget.parent);
-        coin.GetComponent<CoinFly>().StartFly(worldPos, moneyTarget);
+        coin.GetComponent<CoinFly>()
+            .StartFly(worldPos, moneyTarget, moneyToAdd);
     }
 
-    // Coin kasaya deðdiði AN
-    public void OnCoinArrived()
+    public void OnCoinArrived(int amount)
     {
-        currentMoney += pendingMoney;
-        pendingMoney = 0;
-
+        currentMoney += amount;
         UpdateUI();
         StartCoroutine(MoneyPunch());
     }

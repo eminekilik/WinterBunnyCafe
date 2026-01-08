@@ -13,6 +13,12 @@ public class Cup : MonoBehaviour
 
     public CupSlot currentSlot;
 
+    public Sprite creamSprite;
+    public Sprite chocolateChipSprite;
+
+    public bool hasCream;
+    public bool hasChocolateChips;
+
     void Awake()
     {
         sr = GetComponent<SpriteRenderer>();
@@ -20,6 +26,8 @@ public class Cup : MonoBehaviour
 
         isFilled = false;
         hasMarshmallow = false;
+        hasCream = false;
+        hasChocolateChips = false;
     }
 
     public void Fill()
@@ -37,6 +45,26 @@ public class Cup : MonoBehaviour
         hasMarshmallow = true;
         sr.sprite = marshmallowSprite;
     }
+
+    public void AddCream()
+    {
+        if (!isFilled) return;
+        if (hasCream) return;
+
+        hasCream = true;
+        sr.sprite = creamSprite;
+    }
+
+    public void AddChocolateChips()
+    {
+        if (!isFilled) return;
+        if (!hasCream) return;          // ?? ÞART
+        if (hasChocolateChips) return;
+
+        hasChocolateChips = true;
+        sr.sprite = chocolateChipSprite;
+    }
+
 
     void OnMouseDown()
     {
@@ -69,12 +97,19 @@ public class Cup : MonoBehaviour
     public OrderType GetOrderType()
     {
         if (!isFilled)
-            return OrderType.HotChocolate; // zaten servis edilmez
+            return OrderType.HotChocolate;
+
+        if (hasCream && hasChocolateChips)
+            return OrderType.HotChocolateWithCreamAndChocolate;
+
+        if (hasCream)
+            return OrderType.HotChocolateWithCream;
 
         if (hasMarshmallow)
             return OrderType.HotChocolateWithMarshmallow;
 
         return OrderType.HotChocolate;
     }
+
 
 }

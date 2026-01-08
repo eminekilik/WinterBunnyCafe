@@ -1,5 +1,7 @@
 public enum OrderType
 {
     HotChocolate,
-    HotChocolateWithMarshmallow
+    HotChocolateWithMarshmallow,
+    HotChocolateWithCream,
+    HotChocolateWithCreamAndChocolate
 }
