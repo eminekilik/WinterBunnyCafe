@@ -19,6 +19,12 @@ public class Cup : MonoBehaviour
     public bool hasCream;
     public bool hasChocolateChips;
 
+    [Header("Double Click Trash")]
+    public float doubleClickTime = 0.4f;
+
+    float lastClickTime;
+    int clickCount;
+
     void Awake()
     {
         sr = GetComponent<SpriteRenderer>();
@@ -70,6 +76,11 @@ public class Cup : MonoBehaviour
     {
         if (!isFilled) return;
 
+        // Çift týk kontrolü
+        if (HandleDoubleClickTrash())
+            return;
+
+        // NORMAL SERVÝS DAVRANIÞI
         OrderType cupType = GetOrderType();
 
         Customer customer =
@@ -84,6 +95,29 @@ public class Cup : MonoBehaviour
         customer.TryServe(this);
     }
 
+    bool HandleDoubleClickTrash()
+    {
+        if (Time.time - lastClickTime < doubleClickTime)
+        {
+            clickCount++;
+        }
+        else
+        {
+            clickCount = 1;
+        }
+
+        lastClickTime = Time.time;
+
+        if (clickCount >= 2)
+        {
+            Debug.Log("Kupa çöpe atýldý");
+            Destroy(gameObject);
+            clickCount = 0;
+            return true;
+        }
+
+        return false;
+    }
 
     void OnDestroy()
     {

@@ -23,6 +23,12 @@ public class PotCooking : MonoBehaviour
     bool isCooking;
     bool isBurning;
 
+    [Header("Burned Double Click")]
+    public float doubleClickTime = 0.4f;
+
+    float lastClickTime;
+    int clickCount;
+
     void Awake()
     {
         sr = GetComponent<SpriteRenderer>();
@@ -42,6 +48,31 @@ public class PotCooking : MonoBehaviour
         {
             Debug.Log("Kupa doldurma");
             TryFillCup();
+        }
+        else if (sr.sprite == burnedSprite)
+        {
+            HandleBurnedDoubleClick();
+        }
+    }
+
+    void HandleBurnedDoubleClick()
+    {
+        if (Time.time - lastClickTime < doubleClickTime)
+        {
+            clickCount++;
+        }
+        else
+        {
+            clickCount = 1;
+        }
+
+        lastClickTime = Time.time;
+
+        if (clickCount >= 2)
+        {
+            Debug.Log("Yanmýþ tencere çöpe atýldý");
+            ResetPot();
+            clickCount = 0;
         }
     }
 
