@@ -15,6 +15,7 @@ public class MoneyManager : MonoBehaviour
     public int marshmallowHotChocolatePrice = 15;
     public int creamHotChocolatePrice = 18;
     public int creamChocolateHotChocolatePrice = 22;
+    public int cookiePrice = 12;
 
     [Header("UI")]
     public TextMeshProUGUI moneyText;
@@ -53,6 +54,11 @@ public class MoneyManager : MonoBehaviour
 
             case OrderType.HotChocolateWithCreamAndChocolate:
                 moneyToAdd = creamChocolateHotChocolatePrice;
+                break;
+
+            // EKLE
+            case OrderType.Cookie:
+                moneyToAdd = cookiePrice;
                 break;
         }
 

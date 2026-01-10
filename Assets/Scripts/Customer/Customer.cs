@@ -22,8 +22,19 @@ public class Customer : MonoBehaviour
     public Sprite creamHotChocolateIcon;
     public Sprite creamChocolateHotChocolateIcon;
 
+    [Header("Cookie Order")]
+    public Sprite cookieIcon;
+
+    [Header("Customer Appearance")]
+    public SpriteRenderer bodyRenderer;
+    public Sprite[] customerSprites;
+
+    static int lastSpriteIndex = -1;
+
+
     void Start()
     {
+        SetRandomAppearance();
         // Spawn olduðu yer = çýkýþ noktasý
         exitTarget = transform.position;
 
@@ -80,21 +91,50 @@ public class Customer : MonoBehaviour
         }
     }
 
+    void SetRandomAppearance()
+    {
+        if (bodyRenderer == null) return;
+        if (customerSprites == null || customerSprites.Length == 0) return;
+
+        int newIndex;
+
+        if (customerSprites.Length == 1)
+        {
+            newIndex = 0;
+        }
+        else
+        {
+            do
+            {
+                newIndex = Random.Range(0, customerSprites.Length);
+            }
+            while (newIndex == lastSpriteIndex);
+        }
+
+        lastSpriteIndex = newIndex;
+        bodyRenderer.sprite = customerSprites[newIndex];
+    }
+
+
     OrderType GetRandomOrder()
     {
         float r = Random.value;
 
-        if (r < 0.25f)
+        if (r < 0.2f)
+            return OrderType.Cookie;
+
+        if (r < 0.4f)
             return OrderType.HotChocolate;
 
-        if (r < 0.5f)
+        if (r < 0.6f)
             return OrderType.HotChocolateWithMarshmallow;
 
-        if (r < 0.75f)
+        if (r < 0.8f)
             return OrderType.HotChocolateWithCream;
 
         return OrderType.HotChocolateWithCreamAndChocolate;
     }
+
 
     void UpdateOrderIcon()
     {
@@ -116,6 +156,10 @@ public class Customer : MonoBehaviour
 
             case OrderType.HotChocolateWithCreamAndChocolate:
                 orderIconRenderer.sprite = creamChocolateHotChocolateIcon;
+                break;
+
+            case OrderType.Cookie:
+                orderIconRenderer.sprite = cookieIcon;
                 break;
         }
     }
@@ -157,6 +201,38 @@ public class Customer : MonoBehaviour
 
         Destroy(cup.gameObject);
     }
+
+    public void TryServe(Cookie cookie)
+    {
+        if (!CanBeServed()) return;
+
+        if (cookie.GetOrderType() != wantedOrder)
+        {
+            Debug.Log("Yanlýþ sipariþ!");
+            return;
+        }
+
+        orderBubble.SetActive(false);
+
+        MoneyManager.Instance.AddMoneyWithEffect(
+            wantedOrder,
+            transform.position
+        );
+
+        if (patience != null)
+            patience.StopPatience();
+
+        leaving = true;
+
+        CustomerManager.Instance.RemoveCustomer(this);
+        CustomerSlotManager.Instance.FreeSlot(targetSlot);
+
+        if (cookie.currentSlot != null)
+            cookie.currentSlot.Clear();
+
+        Destroy(cookie.gameObject);
+    }
+
 
     public void LeaveBecauseOfAnger()
     {
