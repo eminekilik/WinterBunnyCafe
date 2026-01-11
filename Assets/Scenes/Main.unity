@@ -296,7 +296,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  m_Color: {r: 0.4792453, g: 0.4792453, b: 0.4792453, a: 1}
+  m_Color: {r: 0.64705884, g: 0.64705884, b: 0.64705884, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1304,11 +1304,11 @@ Transform:
   m_GameObject: {fileID: 241100554}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 12, y: 1.83, z: 0}
+  m_LocalPosition: {x: 6.9905033, y: 2.03038, z: -90}
   m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1882967507}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &304978232
 GameObject:
@@ -2930,11 +2930,11 @@ Transform:
   m_GameObject: {fileID: 950081717}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -12, y: 1.83, z: 0}
+  m_LocalPosition: {x: -17.009497, y: 2.03038, z: -90}
   m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1882967507}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &955573863
 GameObject:
@@ -4494,7 +4494,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  m_Color: {r: 0.4792453, g: 0.4792453, b: 0.4792453, a: 1}
+  m_Color: {r: 0.64705884, g: 0.64705884, b: 0.64705884, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -5303,7 +5303,9 @@ Transform:
   m_LocalPosition: {x: 5.0094967, y: -0.20037986, z: 90}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 950081719}
+  - {fileID: 241100556}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1882967508
@@ -6198,7 +6200,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  m_Color: {r: 0.4792453, g: 0.4792453, b: 0.4792453, a: 1}
+  m_Color: {r: 0.64705884, g: 0.64705884, b: 0.64705884, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -6505,17 +6507,15 @@ SceneRoots:
   - {fileID: 812293873}
   - {fileID: 1845696986}
   - {fileID: 1082488672}
-  - {fileID: 2078866611}
+  - {fileID: 1102011834}
   - {fileID: 955573864}
   - {fileID: 1015117124}
-  - {fileID: 1873301429}
-  - {fileID: 1806845429}
-  - {fileID: 1882967507}
-  - {fileID: 950081719}
-  - {fileID: 241100556}
   - {fileID: 1459732601}
   - {fileID: 1493855764}
   - {fileID: 514872923}
+  - {fileID: 1873301429}
   - {fileID: 826988868}
-  - {fileID: 1102011834}
+  - {fileID: 2078866611}
   - {fileID: 565009052}
+  - {fileID: 1882967507}
+  - {fileID: 1806845429}
