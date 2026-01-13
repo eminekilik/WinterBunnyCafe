@@ -15,6 +15,13 @@ public class SceneLoader : MonoBehaviour
         SceneManager.LoadScene(sceneIndex);
     }
 
+    // LevelData ile oyun sahnesi yükleme
+    public void LoadLevel(LevelData levelData)
+    {
+        LevelLoader.SelectedLevel = levelData;
+        SceneManager.LoadScene("Main"); // oyun sahnenin adý
+    }
+
     // Oyundan çýkýþ
     public void QuitGame()
     {

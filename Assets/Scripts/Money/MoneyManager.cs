@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using System.Collections;
+using UnityEngine.UI;
 
 public class MoneyManager : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class MoneyManager : MonoBehaviour
 
     public int currentMoney;
 
-    int pendingMoney; // animasyonu bekleyen para
+    int pendingMoney; // (ileride kullanýrsan diye duruyor)
 
     [Header("Prices")]
     public int hotChocolatePrice = 10;
@@ -19,6 +20,7 @@ public class MoneyManager : MonoBehaviour
 
     [Header("UI")]
     public TextMeshProUGUI moneyText;
+    public Slider moneySlider;
 
     [Header("Coin FX")]
     public GameObject coinPrefab;
@@ -26,11 +28,15 @@ public class MoneyManager : MonoBehaviour
 
     void Awake()
     {
-        Instance = this;
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(gameObject);
     }
 
     void Start()
     {
+        currentMoney = 0;
         UpdateUI();
     }
 
@@ -56,7 +62,6 @@ public class MoneyManager : MonoBehaviour
                 moneyToAdd = creamChocolateHotChocolatePrice;
                 break;
 
-            // EKLE
             case OrderType.Cookie:
                 moneyToAdd = cookiePrice;
                 break;
@@ -76,12 +81,26 @@ public class MoneyManager : MonoBehaviour
 
     void UpdateUI()
     {
+        if (LevelManager.Instance == null) return;
+
+        int target = LevelManager.Instance.targetMoney;
+
+        // TEXT
         if (moneyText != null)
-            moneyText.text = currentMoney.ToString();
+            moneyText.text = currentMoney + " / " + target;
+
+        // SLIDER
+        if (moneySlider != null)
+        {
+            float progress = (float)currentMoney / target;
+            moneySlider.value = Mathf.Clamp01(progress);
+        }
     }
 
     IEnumerator MoneyPunch()
     {
+        if (moneyText == null) yield break;
+
         Transform t = moneyText.transform;
         Vector3 startScale = t.localScale;
         Vector3 bigScale = startScale * 1.15f;
