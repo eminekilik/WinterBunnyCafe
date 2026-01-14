@@ -16,6 +16,11 @@ public class LevelManager : MonoBehaviour
     float remainingTime;
     bool levelEnded;
 
+    [Header("End Panels")]
+    public GameObject endPanel;
+    public GameObject winPanel;
+    public GameObject losePanel;
+
     void Awake()
     {
         Instance = this;
@@ -70,12 +75,23 @@ public class LevelManager : MonoBehaviour
     void LevelSuccess()
     {
         Debug.Log("Bölüm Baþarýlý!");
-        // success panel
+
+        endPanel.SetActive(true);
+        winPanel.SetActive(true);
+        losePanel.SetActive(false);
+
+        Time.timeScale = 0f; // oyunu durdurmak istersen
     }
 
     void LevelFail()
     {
         Debug.Log("Bölüm Baþarýsýz!");
-        // fail panel
+
+        endPanel.SetActive(true);
+        winPanel.SetActive(false);
+        losePanel.SetActive(true);
+
+        Time.timeScale = 0f; // oyunu durdurmak istersen
     }
+
 }
