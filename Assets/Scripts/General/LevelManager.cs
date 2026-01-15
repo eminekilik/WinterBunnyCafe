@@ -21,6 +21,12 @@ public class LevelManager : MonoBehaviour
     public GameObject winPanel;
     public GameObject losePanel;
 
+    [Header("End Screen")]
+    public TextMeshProUGUI loseEndMoneyText;
+    public TextMeshProUGUI winBaseMoneyText;
+    public TextMeshProUGUI winBonusMoneyText;
+
+
     void Awake()
     {
         Instance = this;
@@ -80,12 +86,17 @@ public class LevelManager : MonoBehaviour
         winPanel.SetActive(true);
         losePanel.SetActive(false);
 
-        Time.timeScale = 0f; // oyunu durdurmak istersen
+        StartCoroutine(PlayWinMoneySequence());
+
+        Time.timeScale = 0f;
     }
+
 
     void LevelFail()
     {
         Debug.Log("Bölüm Baþarýsýz!");
+
+        loseEndMoneyText.text = MoneyManager.Instance.GetCurrentMoney().ToString();
 
         endPanel.SetActive(true);
         winPanel.SetActive(false);
@@ -93,5 +104,99 @@ public class LevelManager : MonoBehaviour
 
         Time.timeScale = 0f; // oyunu durdurmak istersen
     }
+
+    IEnumerator PlayWinMoneySequence()
+    {
+        int target = targetMoney;
+        int total = MoneyManager.Instance.GetCurrentMoney();
+        int bonus = Mathf.Max(0, total - target);
+
+        winBaseMoneyText.text = target.ToString();
+
+        if (bonus <= 0)
+        {
+            winBonusMoneyText.gameObject.SetActive(false);
+            winBaseMoneyText.text = total.ToString();
+            yield break;
+        }
+
+        winBonusMoneyText.gameObject.SetActive(true);
+        winBonusMoneyText.text = "+" + bonus;
+
+        yield return BonusPop();
+        yield return BonusFadeOut();
+        yield return BaseMoneyCountUp(target, total);
+    }
+
+    IEnumerator BonusPop()
+    {
+        Transform t = winBonusMoneyText.transform;
+        Vector3 start = t.localScale;
+        Vector3 big = start * 1.4f;
+
+        float time = 0f;
+        while (time < 0.15f)
+        {
+            time += Time.unscaledDeltaTime;
+            t.localScale = Vector3.Lerp(start, big, time / 0.15f);
+            yield return null;
+        }
+
+        yield return new WaitForSecondsRealtime(0.2f);
+    }
+
+    IEnumerator BonusFadeOut()
+    {
+        CanvasGroup cg = winBonusMoneyText.GetComponent<CanvasGroup>();
+        if (cg == null)
+            cg = winBonusMoneyText.gameObject.AddComponent<CanvasGroup>();
+
+        float time = 0f;
+        while (time < 0.2f)
+        {
+            time += Time.unscaledDeltaTime;
+            cg.alpha = Mathf.Lerp(1f, 0f, time / 0.2f);
+            yield return null;
+        }
+
+        winBonusMoneyText.gameObject.SetActive(false);
+        cg.alpha = 1f;
+    }
+
+    IEnumerator BaseMoneyCountUp(int from, int to)
+    {
+        int current = from;
+
+        while (current < to)
+        {
+            current += Mathf.Max(1, (to - from) / 20);
+            current = Mathf.Min(current, to);
+
+            winBaseMoneyText.text = current.ToString();
+            yield return new WaitForSecondsRealtime(0.03f);
+        }
+
+        // küçük pop
+        Transform t = winBaseMoneyText.transform;
+        Vector3 start = t.localScale;
+        Vector3 big = start * 1.15f;
+
+        float time = 0f;
+        while (time < 0.1f)
+        {
+            time += Time.unscaledDeltaTime;
+            t.localScale = Vector3.Lerp(start, big, time / 0.1f);
+            yield return null;
+        }
+
+        time = 0f;
+        while (time < 0.1f)
+        {
+            time += Time.unscaledDeltaTime;
+            t.localScale = Vector3.Lerp(big, start, time / 0.1f);
+            yield return null;
+        }
+    }
+
 
 }

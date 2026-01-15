@@ -124,4 +124,10 @@ public class MoneyManager : MonoBehaviour
             yield return null;
         }
     }
+
+    public int GetCurrentMoney()
+    {
+        return currentMoney;
+    }
+
 }
