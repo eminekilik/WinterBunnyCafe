@@ -111,22 +111,43 @@ public class LevelManager : MonoBehaviour
         int total = MoneyManager.Instance.GetCurrentMoney();
         int bonus = Mathf.Max(0, total - target);
 
+        // 1?? Baþta sadece hedef para görünsün
         winBaseMoneyText.text = target.ToString();
+        winBonusMoneyText.gameObject.SetActive(false);
+
+        // 2?? Kýsa bekleme (ekran otursun)
+        yield return new WaitForSecondsRealtime(0.6f);
 
         if (bonus <= 0)
         {
-            winBonusMoneyText.gameObject.SetActive(false);
             winBaseMoneyText.text = total.ToString();
             yield break;
         }
 
+        // 3?? Bonus SONRADAN gelsin
         winBonusMoneyText.gameObject.SetActive(true);
         winBonusMoneyText.text = "+" + bonus;
 
+        // scale reset (önemli)
+        winBonusMoneyText.transform.localScale = Vector3.one;
+
+        // 4?? Pop animasyonu
         yield return BonusPop();
+
+        // 5?? Okunmasý için bekle
+        yield return new WaitForSecondsRealtime(0.5f);
+
+        // 6?? Kaybol
         yield return BonusFadeOut();
+
+        // 7?? Ana paraya geçmeden mini duraklama
+        yield return new WaitForSecondsRealtime(0.2f);
+
+        // 8?? Ana para sayarak artsýn
         yield return BaseMoneyCountUp(target, total);
     }
+
+
 
     IEnumerator BonusPop()
     {

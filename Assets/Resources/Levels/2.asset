@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6c4ad169ed4ee74086254dc2ba9c798, type: 3}
   m_Name: 2
   m_EditorClassIdentifier: 
-  levelID: 2
+  id: 2
   levelTime: 40
   targetMoney: 250
-  customerPatienceMultiplier: 1

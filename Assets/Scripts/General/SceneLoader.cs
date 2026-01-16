@@ -18,6 +18,7 @@ public class SceneLoader : MonoBehaviour
     // LevelData ile oyun sahnesi yükleme
     public void LoadLevel(LevelData levelData)
     {
+        Time.timeScale = 1f;
         LevelLoader.SelectedLevel = levelData;
         SceneManager.LoadScene("Main"); // oyun sahnenin adý
     }

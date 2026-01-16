@@ -37,6 +37,14 @@ public class MoneyManager : MonoBehaviour
     void Start()
     {
         currentMoney = 0;
+        StartCoroutine(DelayedUIInit());
+    }
+
+    IEnumerator DelayedUIInit()
+    {
+        // LevelManager Start çalýþsýn diye 1 frame bekle
+        yield return null;
+
         UpdateUI();
     }
 

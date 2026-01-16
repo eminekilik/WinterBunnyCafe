@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6c4ad169ed4ee74086254dc2ba9c798, type: 3}
   m_Name: 1
   m_EditorClassIdentifier: 
-  levelTime: 60
-  targetMoney: 100
+  id: 1
+  levelTime: 30
+  targetMoney: 50
