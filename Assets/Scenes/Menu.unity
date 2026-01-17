@@ -343,7 +343,7 @@ MonoBehaviour:
         m_MethodName: LoadLevel
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgument: {fileID: 11400000, guid: 3a29684b36812f148842a816e37d9387, type: 2}
           m_ObjectArgumentAssemblyTypeName: LevelData, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -726,7 +726,7 @@ MonoBehaviour:
         m_MethodName: LoadLevel
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgument: {fileID: 11400000, guid: 66e8bb06b9405474c9b495ac86106647, type: 2}
           m_ObjectArgumentAssemblyTypeName: LevelData, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -1041,7 +1041,7 @@ MonoBehaviour:
         m_MethodName: LoadLevel
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgument: {fileID: 11400000, guid: 855ec1363b29a6a4b8eabe490c1f108a, type: 2}
           m_ObjectArgumentAssemblyTypeName: LevelData, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -1244,7 +1244,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.9058824, b: 0.69803923, a: 0}
+  m_Color: {r: 1, g: 0.9058824, b: 0.69803923, a: 0.2}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2185,7 +2185,7 @@ MonoBehaviour:
         m_MethodName: LoadLevel
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgument: {fileID: 11400000, guid: a98e74123a798754d9a85707bf037809, type: 2}
           m_ObjectArgumentAssemblyTypeName: LevelData, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -2452,7 +2452,7 @@ MonoBehaviour:
         m_MethodName: LoadLevel
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgument: {fileID: 11400000, guid: 73f237a6b1577fb4ba04a5cb8a1bfd36, type: 2}
           m_ObjectArgumentAssemblyTypeName: LevelData, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -2585,7 +2585,7 @@ MonoBehaviour:
         m_MethodName: LoadLevel
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgument: {fileID: 11400000, guid: fe79a36ca044a92478e718b3f01d4ee6, type: 2}
           m_ObjectArgumentAssemblyTypeName: LevelData, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -2852,7 +2852,7 @@ MonoBehaviour:
         m_MethodName: LoadLevel
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgument: {fileID: 11400000, guid: 306822feaf3460b4a82360aa5ad2da45, type: 2}
           m_ObjectArgumentAssemblyTypeName: LevelData, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -3119,7 +3119,7 @@ MonoBehaviour:
         m_MethodName: LoadLevel
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgument: {fileID: 11400000, guid: 9d8123ecc3d5b4440a874933d8a814d5, type: 2}
           m_ObjectArgumentAssemblyTypeName: LevelData, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -3252,7 +3252,7 @@ MonoBehaviour:
         m_MethodName: LoadLevel
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgument: {fileID: 11400000, guid: d8e4699190594794eb1b02f6890987f0, type: 2}
           m_ObjectArgumentAssemblyTypeName: LevelData, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -3385,7 +3385,7 @@ MonoBehaviour:
         m_MethodName: LoadLevel
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgument: {fileID: 11400000, guid: ef818384916b87945b7af6e76a22ccb9, type: 2}
           m_ObjectArgumentAssemblyTypeName: LevelData, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -3518,7 +3518,7 @@ MonoBehaviour:
         m_MethodName: LoadLevel
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgument: {fileID: 11400000, guid: 68f9f3682e7488046b2be5e14660c2ed, type: 2}
           m_ObjectArgumentAssemblyTypeName: LevelData, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -4052,7 +4052,7 @@ MonoBehaviour:
         m_MethodName: LoadLevel
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgument: {fileID: 11400000, guid: 10fb87e01f7770748b17f34853d119f5, type: 2}
           m_ObjectArgumentAssemblyTypeName: LevelData, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -4881,7 +4881,7 @@ MonoBehaviour:
         m_MethodName: LoadLevel
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgument: {fileID: 11400000, guid: 8154127b219440a419b7a9a30b33ce39, type: 2}
           m_ObjectArgumentAssemblyTypeName: LevelData, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0

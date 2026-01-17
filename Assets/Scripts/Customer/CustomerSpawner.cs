@@ -7,11 +7,36 @@ public class CustomerSpawner : MonoBehaviour
     public Transform leftSpawn;
     public Transform rightSpawn;
 
-    public float spawnInterval = 4f;
+    float spawnInterval;
 
     void Start()
     {
+        SetSpawnIntervalFromLevel();
+
         InvokeRepeating(nameof(SpawnCustomer), 1f, spawnInterval);
+    }
+
+    void SetSpawnIntervalFromLevel()
+    {
+        if (LevelLoader.SelectedLevel == null)
+        {
+            spawnInterval = 2.5f;
+            return;
+        }
+
+        int gameSpeed = LevelLoader.SelectedLevel.gameSpeed;
+
+        // hýz ? saniye dönüþümü
+        switch (gameSpeed)
+        {
+            case 1: spawnInterval = 2.5f; break;
+            case 2: spawnInterval = 2.0f; break;
+            case 3: spawnInterval = 1.6f; break;
+            case 4: spawnInterval = 1.3f; break;
+            case 5: spawnInterval = 1.0f; break;
+            case 6: spawnInterval = 0.8f; break;
+            default: spawnInterval = 2.5f; break;
+        }
     }
 
     void SpawnCustomer()
