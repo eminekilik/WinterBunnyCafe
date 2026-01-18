@@ -18,11 +18,13 @@ public class CustomerPatienceSlider : MonoBehaviour
     public Color lowColor = Color.red;
 
     bool isWaiting;
+    float patienceDecreaseMultiplier = 1f;
 
     void Start()
     {
         barRoot.SetActive(false);     // BAÞTA GÖZÜKMESÝN
         isWaiting = false;            // BAÞTA ÇALIÞMASIN
+        SetPatienceMultiplierFromLevel();
     }
 
     void Update()
@@ -37,6 +39,28 @@ public class CustomerPatienceSlider : MonoBehaviour
         if (currentPatience <= 0)
         {
             PatienceFinished();
+        }
+    }
+
+    void SetPatienceMultiplierFromLevel()
+    {
+        if (LevelLoader.SelectedLevel == null)
+        {
+            patienceDecreaseMultiplier = 1f;
+            return;
+        }
+
+        int gameSpeed = LevelLoader.SelectedLevel.gameSpeed;
+
+        switch (gameSpeed)
+        {
+            case 1: patienceDecreaseMultiplier = 1.0f; break;
+            case 2: patienceDecreaseMultiplier = 1.1f; break;
+            case 3: patienceDecreaseMultiplier = 1.25f; break;
+            case 4: patienceDecreaseMultiplier = 1.4f; break;
+            case 5: patienceDecreaseMultiplier = 1.6f; break;
+            case 6: patienceDecreaseMultiplier = 1.8f; break;
+            default: patienceDecreaseMultiplier = 1f; break;
         }
     }
 

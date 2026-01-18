@@ -30,6 +30,7 @@ public class Customer : MonoBehaviour
     public Sprite[] customerSprites;
 
     static int lastSpriteIndex = -1;
+    float moveSpeedMultiplier = 1f;
 
 
     void Start()
@@ -37,6 +38,8 @@ public class Customer : MonoBehaviour
         SetRandomAppearance();
         // Spawn olduðu yer = çýkýþ noktasý
         exitTarget = transform.position;
+
+        SetMoveSpeedMultiplierFromLevel();
 
         patience = GetComponent<CustomerPatienceSlider>();
 
@@ -59,7 +62,7 @@ public class Customer : MonoBehaviour
             transform.position = Vector3.MoveTowards(
                 transform.position,
                 exitTarget,
-                moveSpeed * Time.deltaTime
+                moveSpeed * moveSpeedMultiplier * Time.deltaTime
             );
 
             if (Vector3.Distance(transform.position, exitTarget) < 0.05f)
@@ -75,7 +78,7 @@ public class Customer : MonoBehaviour
         transform.position = Vector3.MoveTowards(
             transform.position,
             targetSlot.position,
-            moveSpeed * Time.deltaTime
+            moveSpeed * moveSpeedMultiplier * Time.deltaTime
         );
 
         if (Vector3.Distance(transform.position, targetSlot.position) < 0.05f)
@@ -88,6 +91,28 @@ public class Customer : MonoBehaviour
 
             if (patience != null)
                 patience.StartPatience();
+        }
+    }
+
+    void SetMoveSpeedMultiplierFromLevel()
+    {
+        if (LevelLoader.SelectedLevel == null)
+        {
+            moveSpeedMultiplier = 1f;
+            return;
+        }
+
+        int gameSpeed = LevelLoader.SelectedLevel.gameSpeed;
+
+        switch (gameSpeed)
+        {
+            case 1: moveSpeedMultiplier = 1.0f; break;
+            case 2: moveSpeedMultiplier = 1.05f; break;
+            case 3: moveSpeedMultiplier = 1.1f; break;
+            case 4: moveSpeedMultiplier = 1.2f; break;
+            case 5: moveSpeedMultiplier = 1.3f; break;
+            case 6: moveSpeedMultiplier = 1.4f; break;
+            default: moveSpeedMultiplier = 1f; break;
         }
     }
 
