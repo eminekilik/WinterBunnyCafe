@@ -89,6 +89,8 @@ public class LevelManager : MonoBehaviour
         StartCoroutine(PlayWinMoneySequence());
 
         Time.timeScale = 0f;
+
+        CurrencyManager.Instance.AddMoney(MoneyManager.Instance.currentMoney);
     }
 
 
@@ -103,6 +105,8 @@ public class LevelManager : MonoBehaviour
         losePanel.SetActive(true);
 
         Time.timeScale = 0f; // oyunu durdurmak istersen
+
+        CurrencyManager.Instance.AddMoney(MoneyManager.Instance.currentMoney);
     }
 
     IEnumerator PlayWinMoneySequence()
