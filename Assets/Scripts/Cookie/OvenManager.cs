@@ -16,9 +16,31 @@ public class OvenManager : MonoBehaviour
     {
         for (int i = 0; i < ovens.Count; i++)
         {
+            if (ovens[i] == null)
+                continue;
+
+            if (!ovens[i].gameObject.activeInHierarchy)
+                continue;
+
             if (ovens[i].IsEmpty())
                 return ovens[i];
         }
+
         return null;
     }
+
+    public bool HasAnyActiveOven()
+    {
+        for (int i = 0; i < ovens.Count; i++)
+        {
+            if (ovens[i] == null)
+                continue;
+
+            if (ovens[i].gameObject.activeInHierarchy)
+                return true;
+        }
+
+        return false;
+    }
+
 }

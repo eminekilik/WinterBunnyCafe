@@ -14,7 +14,7 @@ public class CupArea : MonoBehaviour
     {
         for (int i = 0; i < slots.Length; i++)
         {
-            if (!slots[i].isOccupied)
+            if (!slots[i].isOccupied && slots[i].gameObject.activeInHierarchy)
             {
                 GameObject cup = Instantiate(cupPrefab);
                 slots[i].PlaceCup(cup);
@@ -22,7 +22,7 @@ public class CupArea : MonoBehaviour
             }
         }
 
-        // boþ slot yoksa
-        Debug.Log("Boþ slot yok");
+        Debug.Log("Aktif ve boþ slot yok");
     }
+
 }

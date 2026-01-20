@@ -86,7 +86,9 @@ public class Customer : MonoBehaviour
             hasArrived = true;
             orderBubble.SetActive(true);
 
-            wantedOrder = GetRandomOrder();
+            //wantedOrder = GetRandomOrder();
+            wantedOrder = OrderAvailabilityManager.Instance.GetRandomAvailableOrder();
+
             UpdateOrderIcon();
 
             if (patience != null)
@@ -141,24 +143,24 @@ public class Customer : MonoBehaviour
     }
 
 
-    OrderType GetRandomOrder()
-    {
-        float r = Random.value;
+    //OrderType GetRandomOrder()
+    //{
+    //    float r = Random.value;
 
-        if (r < 0.2f)
-            return OrderType.Cookie;
+    //    if (r < 0.2f)
+    //        return OrderType.Cookie;
 
-        if (r < 0.4f)
-            return OrderType.HotChocolate;
+    //    if (r < 0.4f)
+    //        return OrderType.HotChocolate;
 
-        if (r < 0.6f)
-            return OrderType.HotChocolateWithMarshmallow;
+    //    if (r < 0.6f)
+    //        return OrderType.HotChocolateWithMarshmallow;
 
-        if (r < 0.8f)
-            return OrderType.HotChocolateWithCream;
+    //    if (r < 0.8f)
+    //        return OrderType.HotChocolateWithCream;
 
-        return OrderType.HotChocolateWithCreamAndChocolate;
-    }
+    //    return OrderType.HotChocolateWithCreamAndChocolate;
+    //}
 
 
     void UpdateOrderIcon()

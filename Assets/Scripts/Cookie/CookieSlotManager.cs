@@ -15,9 +15,18 @@ public class CookieSlotManager : MonoBehaviour
     {
         foreach (CookieSlot slot in slots)
         {
+            if (slot == null)
+                continue;
+
+            // ? KAPALI SLOT = YOK SAY
+            if (!slot.gameObject.activeInHierarchy)
+                continue;
+
             if (!slot.isOccupied)
                 return slot;
         }
+
         return null;
     }
+
 }
