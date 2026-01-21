@@ -82,6 +82,8 @@ public class LevelManager : MonoBehaviour
     {
         Debug.Log("Bölüm Baþarýlý!");
 
+        LevelProgressManager.Instance.UnlockLevel(LevelLoader.SelectedLevel.id + 1);
+
         endPanel.SetActive(true);
         winPanel.SetActive(true);
         losePanel.SetActive(false);

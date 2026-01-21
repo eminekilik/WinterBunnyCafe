@@ -15,6 +15,18 @@ public class SceneLoader : MonoBehaviour
         SceneManager.LoadScene(sceneIndex);
     }
 
+    public void LoadMenu()
+    {
+        LevelButton[] buttons = FindObjectsOfType<LevelButton>();
+
+        foreach (var btn in buttons)
+        {
+            btn.UpdateState();
+        }
+
+        SceneManager.LoadScene("Menu");
+    }
+
     // LevelData ile oyun sahnesi yükleme
     public void LoadLevel(LevelData levelData)
     {
