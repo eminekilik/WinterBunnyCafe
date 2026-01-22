@@ -2531,6 +2531,7 @@ GameObject:
   - component: {fileID: 514872922}
   - component: {fileID: 514872921}
   - component: {fileID: 514872924}
+  - component: {fileID: 514872925}
   m_Layer: 0
   m_Name: ChocolateChip
   m_TagString: Untagged
@@ -2662,6 +2663,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61db84c07a84cb24989171da201a3cc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &514872925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 514872920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19a87440582a82b40a9010861f03fce8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlockLevel: 13
 --- !u!1 &564820037
 GameObject:
   m_ObjectHideFlags: 0
@@ -3564,6 +3578,7 @@ GameObject:
   - component: {fileID: 826988867}
   - component: {fileID: 826988866}
   - component: {fileID: 826988869}
+  - component: {fileID: 826988870}
   m_Layer: 0
   m_Name: Dough
   m_TagString: Untagged
@@ -3695,6 +3710,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d62272391bb99ab4f9b3e8b3551b11b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &826988870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 826988865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19a87440582a82b40a9010861f03fce8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlockLevel: 4
 --- !u!1 &839387419
 GameObject:
   m_ObjectHideFlags: 0
@@ -3739,9 +3767,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc8328a88b5ca2c4d8d338d6d15dc678, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HasMarshmallow: 1
-  HasCream: 0
-  HasChocolate: 0
+  marshmallowDecoration: {fileID: 1459732598}
+  creamDecoration: {fileID: 1493855761}
+  chocolateDecoration: {fileID: 514872920}
 --- !u!1 &839607580
 GameObject:
   m_ObjectHideFlags: 0
@@ -4249,6 +4277,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1015117124}
+  - component: {fileID: 1015117125}
   m_Layer: 0
   m_Name: CounterSlots2
   m_TagString: Untagged
@@ -4274,6 +4303,19 @@ Transform:
   - {fileID: 12748462}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1015117125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1015117123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19a87440582a82b40a9010861f03fce8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlockLevel: 4
 --- !u!1 &1057552910
 GameObject:
   m_ObjectHideFlags: 0
@@ -4601,6 +4643,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1102011834}
+  - component: {fileID: 1102011835}
   m_Layer: 0
   m_Name: Ovens
   m_TagString: Untagged
@@ -4626,6 +4669,19 @@ Transform:
   - {fileID: 169173652}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1102011835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1102011833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19a87440582a82b40a9010861f03fce8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlockLevel: 4
 --- !u!1 &1143799421
 GameObject:
   m_ObjectHideFlags: 0
@@ -5676,6 +5732,7 @@ GameObject:
   - component: {fileID: 1459732600}
   - component: {fileID: 1459732599}
   - component: {fileID: 1459732602}
+  - component: {fileID: 1459732603}
   m_Layer: 0
   m_Name: Marshmallow
   m_TagString: Untagged
@@ -5807,6 +5864,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bad541a326c773c45b755d155e4c80bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1459732603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1459732598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19a87440582a82b40a9010861f03fce8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlockLevel: 7
 --- !u!1 &1486888500
 GameObject:
   m_ObjectHideFlags: 0
@@ -5899,6 +5969,7 @@ GameObject:
   - component: {fileID: 1493855763}
   - component: {fileID: 1493855762}
   - component: {fileID: 1493855765}
+  - component: {fileID: 1493855766}
   m_Layer: 0
   m_Name: Cream
   m_TagString: Untagged
@@ -6030,6 +6101,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6be11249e4e3b048a0282466b4b3a4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1493855766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1493855761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19a87440582a82b40a9010861f03fce8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlockLevel: 10
 --- !u!1 &1533979671
 GameObject:
   m_ObjectHideFlags: 0
@@ -7382,6 +7466,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1805111869}
   - component: {fileID: 1805111870}
+  - component: {fileID: 1805111871}
   m_Layer: 0
   m_Name: Oven
   m_TagString: Untagged
@@ -7459,6 +7544,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1805111871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1805111868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19a87440582a82b40a9010861f03fce8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlockLevel: 4
 --- !u!1 &1806845427
 GameObject:
   m_ObjectHideFlags: 0
