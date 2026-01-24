@@ -3,16 +3,16 @@ using UnityEngine;
 public class ShopUnlockGroup : MonoBehaviour
 {
     public string saveKey;
+    public int shopStartIndex = 1;
 
     void Start()
     {
         int unlocked = PlayerPrefs.GetInt(saveKey, 0);
 
-        int index = 0;
-        foreach (Transform child in transform)
+        for (int i = shopStartIndex; i < transform.childCount; i++)
         {
-            child.gameObject.SetActive(index < unlocked);
-            index++;
+            bool shouldBeActive = (i - shopStartIndex) < unlocked;
+            transform.GetChild(i).gameObject.SetActive(shouldBeActive);
         }
     }
 }

@@ -4195,6 +4195,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 955573864}
+  - component: {fileID: 955573865}
   m_Layer: 0
   m_Name: CounterSlots
   m_TagString: Untagged
@@ -4220,6 +4221,20 @@ Transform:
   - {fileID: 604780914}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &955573865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 955573863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 774b06ad77c478044aaa0e5e23339386, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  saveKey: ShopCupSlotCount
+  shopStartIndex: 1
 --- !u!1 &970387324
 GameObject:
   m_ObjectHideFlags: 0
@@ -4278,6 +4293,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1015117124}
   - component: {fileID: 1015117125}
+  - component: {fileID: 1015117126}
   m_Layer: 0
   m_Name: CounterSlots2
   m_TagString: Untagged
@@ -4316,6 +4332,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unlockLevel: 4
+--- !u!114 &1015117126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1015117123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 774b06ad77c478044aaa0e5e23339386, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  saveKey: ShopCookieSlotCount
+  shopStartIndex: 1
 --- !u!1 &1057552910
 GameObject:
   m_ObjectHideFlags: 0
@@ -4534,6 +4564,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1082488672}
+  - component: {fileID: 1082488673}
   m_Layer: 0
   m_Name: Pots
   m_TagString: Untagged
@@ -4554,11 +4585,25 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1872238460}
-  - {fileID: 109051852}
   - {fileID: 1374265197}
+  - {fileID: 109051852}
+  - {fileID: 1872238460}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1082488673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1082488671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 774b06ad77c478044aaa0e5e23339386, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  saveKey: ShopPotCount
+  shopStartIndex: 1
 --- !u!1 &1094042991
 GameObject:
   m_ObjectHideFlags: 0
@@ -4644,6 +4689,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1102011834}
   - component: {fileID: 1102011835}
+  - component: {fileID: 1102011836}
   m_Layer: 0
   m_Name: Ovens
   m_TagString: Untagged
@@ -4682,6 +4728,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unlockLevel: 4
+--- !u!114 &1102011836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1102011833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 774b06ad77c478044aaa0e5e23339386, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  saveKey: ShopOvenCount
+  shopStartIndex: 1
 --- !u!1 &1143799421
 GameObject:
   m_ObjectHideFlags: 0
@@ -5429,7 +5489,7 @@ GameObject:
   - component: {fileID: 1374265199}
   - component: {fileID: 1374265198}
   m_Layer: 0
-  m_Name: pot3
+  m_Name: pot1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7691,7 +7751,7 @@ GameObject:
   - component: {fileID: 1872238462}
   - component: {fileID: 1872238461}
   m_Layer: 0
-  m_Name: pot1
+  m_Name: pot3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
