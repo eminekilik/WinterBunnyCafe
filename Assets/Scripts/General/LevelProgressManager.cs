@@ -25,5 +25,19 @@ public class LevelProgressManager : MonoBehaviour
     {
         PlayerPrefs.SetInt("Level_" + levelIndex, 1);
         PlayerPrefs.Save();
+
+        RefreshUnlockables();
+    }
+
+    void RefreshUnlockables()
+    {
+        // true => kapali (inactive) objeleri de bulur
+        UnlockableObject[] unlockables =
+            FindObjectsOfType<UnlockableObject>(true);
+
+        foreach (var obj in unlockables)
+        {
+            obj.UpdateState();
+        }
     }
 }
