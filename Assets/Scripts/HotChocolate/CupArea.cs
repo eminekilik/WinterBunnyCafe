@@ -5,6 +5,10 @@ public class CupArea : MonoBehaviour
     public GameObject cupPrefab;
     public CupSlot[] slots; // SIRALI
 
+    [Header("Audio")]
+    public AudioSource audioSource;
+    public AudioClip cupSound;
+
     void OnMouseDown()
     {
         SpawnCupToFirstEmptySlot();
@@ -16,6 +20,9 @@ public class CupArea : MonoBehaviour
         {
             if (!slots[i].isOccupied && slots[i].gameObject.activeInHierarchy)
             {
+                if (audioSource != null && cupSound != null)
+                    audioSource.PlayOneShot(cupSound);
+
                 GameObject cup = Instantiate(cupPrefab);
                 slots[i].PlaceCup(cup);
                 return;

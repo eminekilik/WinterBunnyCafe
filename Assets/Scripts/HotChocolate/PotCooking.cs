@@ -29,6 +29,12 @@ public class PotCooking : MonoBehaviour
     float lastClickTime;
     int clickCount;
 
+    [Header("Audio")]
+    public AudioSource audioSource;
+    public AudioClip cookingStartSound;
+    public AudioClip fillCupSound;
+
+
     void Awake()
     {
         sr = GetComponent<SpriteRenderer>();
@@ -81,8 +87,13 @@ public class PotCooking : MonoBehaviour
         Cup cup = CupManager.Instance.GetFirstEmptyCup();
         if (cup == null) return;
 
+        
+
         cup.Fill();
         ResetPot();
+
+        if (audioSource != null && fillCupSound != null)
+            audioSource.PlayOneShot(fillCupSound);
     }
 
 
@@ -120,6 +131,9 @@ public class PotCooking : MonoBehaviour
         cookBarFill.color = Color.green;
 
         sr.sprite = cookingSprite;
+
+        if (audioSource != null && cookingStartSound != null)
+            audioSource.PlayOneShot(cookingStartSound);
     }
 
     void FinishCooking()
@@ -132,6 +146,8 @@ public class PotCooking : MonoBehaviour
         cookBarFill.color = Color.red;
 
         sr.sprite = cookedSprite;
+
+        //StopCookingSound();
     }
 
     void Burn()
@@ -142,6 +158,8 @@ public class PotCooking : MonoBehaviour
         cookBarFill.fillAmount = 0f;
 
         sr.sprite = burnedSprite;
+
+        StopCookingSound();
     }
 
     void ResetPot()
@@ -154,5 +172,14 @@ public class PotCooking : MonoBehaviour
 
         cookBarBG.SetActive(false);
         cookBarFill.fillAmount = 0f;
+
+        StopCookingSound();
     }
+
+    void StopCookingSound()
+    {
+        if (audioSource != null)
+            audioSource.Stop();
+    }
+
 }

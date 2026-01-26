@@ -16,5 +16,8 @@ public class UnlockableObject : MonoBehaviour
             .IsLevelUnlocked(unlockLevel);
 
         gameObject.SetActive(unlocked);
+
+        if (DecorationManager.Instance != null)
+            DecorationManager.Instance.UpdateStates();
     }
 }
