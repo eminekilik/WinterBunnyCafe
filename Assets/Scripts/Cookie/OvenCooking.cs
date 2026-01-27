@@ -31,6 +31,14 @@ public class OvenCooking : MonoBehaviour
     [Header("Cookie")]
     public GameObject cookiePrefab;
 
+    [Header("Audio")]
+    public AudioSource audioSource;
+    public AudioClip cookingStartSound;
+    public AudioClip takeCookieSound;
+    public AudioClip doneSound;
+    public AudioClip burnSound;
+    public AudioClip trashSound;
+
     void Awake()
     {
         sr = GetComponent<SpriteRenderer>();
@@ -52,6 +60,9 @@ public class OvenCooking : MonoBehaviour
         cookBarFill.color = Color.green;
 
         sr.sprite = cookingSprite;
+
+        if (audioSource != null && cookingStartSound != null)
+            audioSource.PlayOneShot(cookingStartSound);
     }
 
     void Update()
@@ -84,6 +95,9 @@ public class OvenCooking : MonoBehaviour
         cookBarFill.color = Color.red;
 
         sr.sprite = cookedSprite;
+
+        if (audioSource != null && doneSound != null)
+            audioSource.PlayOneShot(doneSound);
     }
 
     void Burn()
@@ -94,6 +108,9 @@ public class OvenCooking : MonoBehaviour
         cookBarFill.fillAmount = 0f;
 
         sr.sprite = burnedSprite;
+
+        if (audioSource != null && burnSound != null)
+            audioSource.PlayOneShot(burnSound);
     }
 
     void OnMouseDown()
@@ -117,6 +134,9 @@ public class OvenCooking : MonoBehaviour
         slot.PlaceCookie(cookieObj);
 
         ResetOven();
+
+        if (audioSource != null && takeCookieSound != null)
+            audioSource.PlayOneShot(takeCookieSound);
     }
 
 
@@ -133,7 +153,11 @@ public class OvenCooking : MonoBehaviour
         {
             ResetOven();
             clickCount = 0;
+
+            if (audioSource != null && trashSound != null)
+                audioSource.PlayOneShot(trashSound);
         }
+        
     }
 
     void ResetOven()

@@ -25,6 +25,10 @@ public class Cup : MonoBehaviour
     float lastClickTime;
     int clickCount;
 
+    [Header("Audio")]
+    public AudioSource audioSource;
+    public AudioClip trashSound;
+
     void Awake()
     {
         sr = GetComponent<SpriteRenderer>();
@@ -113,6 +117,10 @@ public class Cup : MonoBehaviour
             Debug.Log("Kupa çöpe atýldý");
             Destroy(gameObject);
             clickCount = 0;
+
+            if (audioSource != null && trashSound != null)
+                audioSource.PlayOneShot(trashSound);
+
             return true;
         }
 

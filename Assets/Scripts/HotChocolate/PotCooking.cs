@@ -33,6 +33,9 @@ public class PotCooking : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip cookingStartSound;
     public AudioClip fillCupSound;
+    public AudioClip doneSound;
+    public AudioClip burnSound;
+    public AudioClip trashSound;
 
 
     void Awake()
@@ -79,6 +82,9 @@ public class PotCooking : MonoBehaviour
             Debug.Log("Yanmýþ tencere çöpe atýldý");
             ResetPot();
             clickCount = 0;
+
+            if (audioSource != null && trashSound != null)
+                audioSource.PlayOneShot(trashSound);
         }
     }
 
@@ -147,7 +153,8 @@ public class PotCooking : MonoBehaviour
 
         sr.sprite = cookedSprite;
 
-        //StopCookingSound();
+        if (audioSource != null && doneSound != null)
+            audioSource.PlayOneShot(doneSound);
     }
 
     void Burn()
@@ -160,6 +167,8 @@ public class PotCooking : MonoBehaviour
         sr.sprite = burnedSprite;
 
         StopCookingSound();
+        if (audioSource != null && burnSound != null)
+            audioSource.PlayOneShot(burnSound);
     }
 
     void ResetPot()

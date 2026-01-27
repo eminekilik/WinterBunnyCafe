@@ -27,6 +27,12 @@ public class LevelManager : MonoBehaviour
     public TextMeshProUGUI winBonusMoneyText;
 
 
+    [Header("Audio")]
+    public AudioSource audioSource;
+    public AudioClip winSound;
+    public AudioClip loseSound;
+
+
     void Awake()
     {
         Instance = this;
@@ -71,10 +77,16 @@ public class LevelManager : MonoBehaviour
         if (MoneyManager.Instance.currentMoney >= targetMoney)
         {
             LevelSuccess();
+            if (audioSource != null && winSound != null)
+                audioSource.PlayOneShot(winSound);
+
         }
         else
         {
             LevelFail();
+            if (audioSource != null && loseSound != null)
+                audioSource.PlayOneShot(loseSound);
+
         }
     }
 

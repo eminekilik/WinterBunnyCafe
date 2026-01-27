@@ -32,6 +32,10 @@ public class Customer : MonoBehaviour
     static int lastSpriteIndex = -1;
     float moveSpeedMultiplier = 1f;
 
+    [Header("Audio")]
+    public AudioSource audioSource;
+    public AudioClip coinSound;
+
 
     void Start()
     {
@@ -227,6 +231,10 @@ public class Customer : MonoBehaviour
             cup.currentSlot.Clear();
 
         Destroy(cup.gameObject);
+
+        if (audioSource != null && coinSound != null)
+            audioSource.PlayOneShot(coinSound);
+
     }
 
     public void TryServe(Cookie cookie)
@@ -258,6 +266,10 @@ public class Customer : MonoBehaviour
             cookie.currentSlot.Clear();
 
         Destroy(cookie.gameObject);
+
+        if (audioSource != null && coinSound != null)
+            audioSource.PlayOneShot(coinSound);
+
     }
 
 
