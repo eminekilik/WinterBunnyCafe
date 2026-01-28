@@ -19,6 +19,10 @@ public class MarketItemButton : MonoBehaviour
 
     int basePrice;
 
+    [Header("Audio")]
+    public AudioSource audioSource;
+    public AudioClip buttonSound;
+
     void Start()
     {
         basePrice = price;
@@ -57,6 +61,9 @@ public class MarketItemButton : MonoBehaviour
 
     public void Buy()
     {
+        if (audioSource != null && buttonSound != null)
+            audioSource.PlayOneShot(buttonSound);
+
         string key = GetSaveKey(itemType);
         int current = PlayerPrefs.GetInt(key, 0);
 
