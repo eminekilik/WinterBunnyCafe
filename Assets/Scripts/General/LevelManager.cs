@@ -71,8 +71,10 @@ public class LevelManager : MonoBehaviour
 
     IEnumerator EndLevelRoutine()
     {
-        // coin animasyonlarý bitsin diye bekle
-        yield return new WaitForSeconds(2f);
+        // coin animasyonlarý bitene kadar bekle
+        yield return new WaitUntil(() =>
+            MoneyManager.Instance.ActiveCoinCount == 0
+        );
 
         if (MoneyManager.Instance.currentMoney >= targetMoney)
         {

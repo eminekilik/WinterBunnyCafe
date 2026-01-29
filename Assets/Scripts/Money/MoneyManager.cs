@@ -26,6 +26,8 @@ public class MoneyManager : MonoBehaviour
     public GameObject coinPrefab;
     public RectTransform moneyTarget;
 
+    public int ActiveCoinCount { get; private set; }
+
     void Awake()
     {
         if (Instance == null)
@@ -76,6 +78,9 @@ public class MoneyManager : MonoBehaviour
         }
 
         GameObject coin = Instantiate(coinPrefab, moneyTarget.parent);
+
+        ActiveCoinCount++;
+
         coin.GetComponent<CoinFly>()
             .StartFly(worldPos, moneyTarget, moneyToAdd);
     }
@@ -85,6 +90,8 @@ public class MoneyManager : MonoBehaviour
         currentMoney += amount;
         UpdateUI();
         StartCoroutine(MoneyPunch());
+
+        ActiveCoinCount = Mathf.Max(0, ActiveCoinCount - 1);
     }
 
     void UpdateUI()
