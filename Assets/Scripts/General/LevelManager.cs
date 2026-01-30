@@ -32,6 +32,27 @@ public class LevelManager : MonoBehaviour
     public AudioClip winSound;
     public AudioClip loseSound;
 
+    [Header("Timer FX")]
+    public Color warningTimerColor = Color.red;
+    public float timerPopScale = 1.3f;
+    public float timerPopDuration = 0.15f;
+
+    [Header("Timer Audio")]
+    public AudioClip timerTickLoop;
+
+    int lastSecond = -1;
+    bool warningStarted;
+
+    Color originalTimerColor;
+    Vector3 originalTimerScale;
+
+    [Header("Timer Icon FX")]
+    public RectTransform timerIcon;
+    public float shakeAmplitude = 3f;   // çok küçük
+    public float shakeFrequency = 40f;  // hýzlý titreþim
+    public float shakeDuration = 0.18f;
+
+    Vector3 originalIconPos;
 
     void Awake()
     {
@@ -47,6 +68,12 @@ public class LevelManager : MonoBehaviour
         }
 
         remainingTime = levelTime;
+
+        originalTimerColor = timerText.color;
+        originalTimerScale = timerText.transform.localScale;
+
+        if (timerIcon != null)
+            originalIconPos = timerIcon.anchoredPosition;
     }
 
     void Update()
@@ -59,6 +86,7 @@ public class LevelManager : MonoBehaviour
         if (remainingTime <= 0)
         {
             levelEnded = true; // timer dursun
+            StopWarning();
             StartCoroutine(EndLevelRoutine());
         }
     }
@@ -67,6 +95,94 @@ public class LevelManager : MonoBehaviour
     {
         int seconds = Mathf.CeilToInt(Mathf.Max(remainingTime, 0));
         timerText.text = seconds.ToString();
+
+        if (seconds <= 5 && seconds > 0)
+        {
+            if (!warningStarted)
+                StartWarning();
+
+            if (seconds != lastSecond)
+            {
+                lastSecond = seconds;
+                StartCoroutine(TimerPop());
+
+                if (timerIcon != null)
+                    StartCoroutine(ShakeIcon());
+            }
+        }
+    }
+
+    IEnumerator ShakeIcon()
+    {
+        float time = 0f;
+
+        while (time < shakeDuration)
+        {
+            time += Time.deltaTime;
+
+            // 0-1 arasý yumuþak eðri (baþta ve sonda sakin)
+            float strengthMultiplier = Mathf.Sin((time / shakeDuration) * Mathf.PI);
+
+            float x = Random.Range(-2f, 2f) * shakeAmplitude * strengthMultiplier;
+            float y = Random.Range(-1f, 1f) * shakeAmplitude * 1f * strengthMultiplier;
+
+            timerIcon.anchoredPosition = originalIconPos + new Vector3(x, y, 0f);
+
+            yield return null;
+        }
+
+        timerIcon.anchoredPosition = originalIconPos;
+    }
+
+    void StartWarning()
+    {
+        warningStarted = true;
+        timerText.color = warningTimerColor;
+
+        if (audioSource != null && timerTickLoop != null)
+        {
+            audioSource.clip = timerTickLoop;
+            audioSource.loop = true;
+            audioSource.Play();
+        }
+    }
+
+    void StopWarning()
+    {
+        timerText.color = originalTimerColor;
+        timerText.transform.localScale = originalTimerScale;
+
+        if (audioSource != null && audioSource.loop)
+        {
+            audioSource.Stop();
+            audioSource.loop = false;
+            audioSource.clip = null;
+        }
+
+        if (timerIcon != null)
+            timerIcon.anchoredPosition = originalIconPos;
+    }
+
+    IEnumerator TimerPop()
+    {
+        Transform t = timerText.transform;
+        Vector3 big = originalTimerScale * timerPopScale;
+
+        float time = 0f;
+        while (time < timerPopDuration)
+        {
+            time += Time.deltaTime;
+            t.localScale = Vector3.Lerp(originalTimerScale, big, time / timerPopDuration);
+            yield return null;
+        }
+
+        time = 0f;
+        while (time < timerPopDuration)
+        {
+            time += Time.deltaTime;
+            t.localScale = Vector3.Lerp(big, originalTimerScale, time / timerPopDuration);
+            yield return null;
+        }
     }
 
     IEnumerator EndLevelRoutine()
