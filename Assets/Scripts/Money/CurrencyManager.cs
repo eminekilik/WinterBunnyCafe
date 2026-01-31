@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using System.Collections;
 
 public class CurrencyManager : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class CurrencyManager : MonoBehaviour
     TMP_Text totalMoneyText;
 
     const string MONEY_TEXT_NAME = "TotalMoneyText";
+
+    bool isAnimating = false;
 
     void Awake()
     {
@@ -72,12 +75,38 @@ public class CurrencyManager : MonoBehaviour
 
     public bool SpendMoney(int amount)
     {
-        if (totalMoney < amount) return false;
+        if (totalMoney < amount || isAnimating) return false;
 
-        totalMoney -= amount;
+        StartCoroutine(SpendMoneyAnimated(amount));
+        return true;
+    }
+
+    IEnumerator SpendMoneyAnimated(int amount)
+    {
+        isAnimating = true;
+
+        int startMoney = totalMoney;
+        int targetMoney = totalMoney - amount;
+
+        float duration = 0.4f; // daha sakin istersen 0.6f
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.unscaledDeltaTime;
+            float t = elapsed / duration;
+
+            totalMoney = Mathf.RoundToInt(Mathf.Lerp(startMoney, targetMoney, t));
+            UpdateUI();
+
+            yield return null;
+        }
+
+        totalMoney = targetMoney;
         SaveMoney();
         UpdateUI();
-        return true;
+
+        isAnimating = false;
     }
 
     void UpdateUI()
