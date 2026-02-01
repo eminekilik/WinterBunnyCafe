@@ -38,8 +38,4 @@ public class LevelButton : MonoBehaviour
         button.interactable = unlocked;
     }
 
-    public void OnClickLevel()
-    {
-        if (!button.interactable) return;
-    }
 }

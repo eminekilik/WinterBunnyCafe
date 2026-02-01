@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -42,10 +43,22 @@ public class SceneLoader : MonoBehaviour
     {
         Time.timeScale = 1f;
         LevelLoader.SelectedLevel = levelData;
-        SceneManager.LoadScene("Main"); // oyun sahnenin adý
+
         if (audioSource != null && buttonSound != null)
             audioSource.PlayOneShot(buttonSound);
+
+        StartCoroutine(LoadLoadingSceneAsync());
     }
+
+    IEnumerator LoadLoadingSceneAsync()
+    {
+        AsyncOperation loadLoading = SceneManager.LoadSceneAsync("Loading");
+        loadLoading.allowSceneActivation = true;
+
+        while (!loadLoading.isDone)
+            yield return null;
+    }
+
 
     // Oyundan çýkýþ
     public void QuitGame()
