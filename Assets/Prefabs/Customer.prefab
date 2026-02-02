@@ -458,6 +458,11 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 9062fe0a9213d2f4b9b01720117bf24f, type: 3}
   audioSource: {fileID: 782235682699891969}
   coinSound: {fileID: 8300000, guid: 2ec14d07946c7fe429f08fc058e5b2f8, type: 3}
+  happyFaceIcon: {fileID: 21300000, guid: 708aa6f68dbcfdc4a98e9bfbd8047531, type: 3}
+  sadFaceIcon: {fileID: 21300000, guid: 8e276a38853f0e54c9453f62aa3b9911, type: 3}
+  happySound: {fileID: 8300000, guid: 52320e590bf774734a288886eba557ba, type: 3}
+  sadSound: {fileID: 8300000, guid: 7e26c9daf4c32483b9c2790e662d3f1b, type: 3}
+  emotionDisplayTime: 1.2
 --- !u!114 &8611931824677696844
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Customer : MonoBehaviour
@@ -35,6 +36,17 @@ public class Customer : MonoBehaviour
     [Header("Audio")]
     public AudioSource audioSource;
     public AudioClip coinSound;
+
+    [Header("Emotion Icons")]
+    public Sprite happyFaceIcon;
+    public Sprite sadFaceIcon;
+
+    [Header("Emotion Audio")]
+    public AudioClip happySound;
+    public AudioClip sadSound;
+
+    [Header("Emotion Settings")]
+    public float emotionDisplayTime = 1.2f;
 
 
     void Start()
@@ -222,7 +234,8 @@ public class Customer : MonoBehaviour
         if (patience != null)
             patience.StopPatience();
 
-        leaving = true;
+        //leaving = true;
+        StartCoroutine(ShowEmotionAndLeave(happyFaceIcon, happySound));
 
         CustomerManager.Instance.RemoveCustomer(this);
         CustomerSlotManager.Instance.FreeSlot(targetSlot);
@@ -257,7 +270,8 @@ public class Customer : MonoBehaviour
         if (patience != null)
             patience.StopPatience();
 
-        leaving = true;
+        //leaving = true;
+        StartCoroutine(ShowEmotionAndLeave(happyFaceIcon, happySound));
 
         CustomerManager.Instance.RemoveCustomer(this);
         CustomerSlotManager.Instance.FreeSlot(targetSlot);
@@ -275,11 +289,27 @@ public class Customer : MonoBehaviour
 
     public void LeaveBecauseOfAnger()
     {
-        orderBubble.SetActive(false);
-
-        leaving = true;
-
         CustomerManager.Instance.RemoveCustomer(this);
         CustomerSlotManager.Instance.FreeSlot(targetSlot);
+
+        StartCoroutine(ShowEmotionAndLeave(sadFaceIcon, sadSound));
     }
+
+
+    IEnumerator ShowEmotionAndLeave(Sprite emotionSprite, AudioClip emotionSound)
+    {
+        orderBubble.SetActive(true);
+
+        if (orderIconRenderer != null)
+            orderIconRenderer.sprite = emotionSprite;
+
+        if (audioSource != null && emotionSound != null)
+            audioSource.PlayOneShot(emotionSound);
+
+        yield return new WaitForSeconds(emotionDisplayTime);
+
+        orderBubble.SetActive(false);
+        leaving = true;
+    }
+
 }
