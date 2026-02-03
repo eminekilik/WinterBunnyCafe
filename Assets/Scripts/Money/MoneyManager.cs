@@ -90,8 +90,10 @@ public class MoneyManager : MonoBehaviour
         currentMoney += amount;
         UpdateUI();
         StartCoroutine(MoneyPunch());
-
+    
         ActiveCoinCount = Mathf.Max(0, ActiveCoinCount - 1);
+
+        ComboSystem.Instance.OnSale();
     }
 
     void UpdateUI()
