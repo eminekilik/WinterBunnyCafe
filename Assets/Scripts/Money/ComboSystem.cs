@@ -8,7 +8,7 @@ public class ComboSystem : MonoBehaviour
 
     [Header("UI")]
     public GameObject comboPanel;
-    public Image[] comboSlots; // 4 kare
+    public Image[] comboSlots;
 
     [Header("Colors")]
     public Color normalColor;
@@ -17,10 +17,11 @@ public class ComboSystem : MonoBehaviour
     [Header("Settings")]
     public float comboDuration = 3f;
 
-    int currentCombo = 0;          // panel açýldýktan sonraki combo
-    int consecutiveSales = 0;      // peþ peþe satýþ sayýsý
-
+    int comboCount = 0;
+    int consecutiveSales = 0;
     Coroutine comboTimer;
+
+    int totalComboBonus = 0; // ?? LEVEL BOYUNCA KAZANILAN TOPLAM BONUS
 
     void Awake()
     {
@@ -32,33 +33,35 @@ public class ComboSystem : MonoBehaviour
 
     void Start()
     {
-        ResetCombo();
+        ResetComboVisual();
+        totalComboBonus = 0;
     }
 
-    // Para gerçekten eklendiðinde çaðrýlýr
+    // ?? HER SATIÞTA ÇAÐRILIR
     public void OnSale()
     {
-        // süreyi resetle
-        if (comboTimer != null)
-            StopCoroutine(comboTimer);
-
         consecutiveSales++;
 
-        // ? Ýlk satýþ: panel yok, combo yok
+        // ilk satýþ ? combo yok
         if (consecutiveSales == 1)
-        {
-            comboTimer = StartCoroutine(ComboCountdown());
             return;
+
+        // ikinci satýþ ? combo baþlar
+        if (consecutiveSales == 2)
+        {
+            comboPanel.SetActive(true);
+            comboCount = 1;
+        }
+        else
+        {
+            comboCount++;
         }
 
-        // ? Ýkinci satýþtan itibaren
-        if (!comboPanel.activeSelf)
-            comboPanel.SetActive(true);
-
-        currentCombo++;
-        currentCombo = Mathf.Clamp(currentCombo, 1, comboSlots.Length);
-
+        comboCount = Mathf.Clamp(comboCount, 1, comboSlots.Length);
         UpdateComboUI();
+
+        if (comboTimer != null)
+            StopCoroutine(comboTimer);
 
         comboTimer = StartCoroutine(ComboCountdown());
     }
@@ -67,35 +70,28 @@ public class ComboSystem : MonoBehaviour
     {
         yield return new WaitForSeconds(comboDuration);
 
-        // ?? combo zinciri bitti ? bonusu ver
         GiveBonus();
-
         ResetCombo();
-    }
-
-    void UpdateComboUI()
-    {
-        for (int i = 0; i < comboSlots.Length; i++)
-        {
-            comboSlots[i].color = i < currentCombo ? activeColor : normalColor;
-        }
     }
 
     void GiveBonus()
     {
         int bonus = 0;
 
-        if (currentCombo >= 4)
+        if (comboCount >= 4)
             bonus = 15;
-        else if (currentCombo >= 3)
+        else if (comboCount == 3)
             bonus = 10;
-        else if (currentCombo >= 2)
+        else if (comboCount == 2)
             bonus = 5;
 
         if (bonus > 0)
         {
-            MoneyManager.Instance.currentMoney += bonus;
+            // ?? TOPLAM BONUS BURADA BÝRÝKÝR
+            totalComboBonus += bonus;
 
+            // ?? OYUN SIRASINDA PARA HEMEN ARTSIN (ESKÝSÝ GÝBÝ)
+            MoneyManager.Instance.currentMoney += bonus;
             MoneyManager.Instance.SendMessage(
                 "UpdateUI",
                 SendMessageOptions.DontRequireReceiver
@@ -103,16 +99,30 @@ public class ComboSystem : MonoBehaviour
         }
     }
 
+    void UpdateComboUI()
+    {
+        for (int i = 0; i < comboSlots.Length; i++)
+            comboSlots[i].color = i < comboCount ? activeColor : normalColor;
+    }
+
     void ResetCombo()
     {
-        currentCombo = 0;
+        comboCount = 0;
         consecutiveSales = 0;
 
-        for (int i = 0; i < comboSlots.Length; i++)
-        {
-            comboSlots[i].color = normalColor;
-        }
-
+        ResetComboVisual();
         comboPanel.SetActive(false);
+    }
+
+    void ResetComboVisual()
+    {
+        for (int i = 0; i < comboSlots.Length; i++)
+            comboSlots[i].color = normalColor;
+    }
+
+    // ?? LevelManager BURADAN OKUYACAK
+    public int GetTotalComboBonus()
+    {
+        return totalComboBonus;
     }
 }

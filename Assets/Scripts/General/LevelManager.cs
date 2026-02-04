@@ -243,46 +243,39 @@ public class LevelManager : MonoBehaviour
 
     IEnumerator PlayWinMoneySequence()
     {
-        int target = targetMoney;
-        int total = MoneyManager.Instance.GetCurrentMoney();
-        int bonus = Mathf.Max(0, total - target);
+        int totalMoney = MoneyManager.Instance.GetCurrentMoney();
 
-        // 1?? Baþta sadece hedef para görünsün
-        winBaseMoneyText.text = target.ToString();
+        int comboBonus = ComboSystem.Instance != null
+            ? ComboSystem.Instance.GetTotalComboBonus()
+            : 0;
+
+        // ?? SADECE SÝPARÝÞTEN GELEN PARA
+        int baseMoney = totalMoney - comboBonus;
+        baseMoney = Mathf.Max(0, baseMoney);
+
+        // 1?? önce sipariþ parasý
+        winBaseMoneyText.text = baseMoney.ToString();
         winBonusMoneyText.gameObject.SetActive(false);
 
-        // 2?? Kýsa bekleme (ekran otursun)
         yield return new WaitForSecondsRealtime(0.6f);
 
-        if (bonus <= 0)
+        // 2?? combo bonusu AYRI HÝSSETTÝR
+        if (comboBonus > 0)
         {
-            winBaseMoneyText.text = total.ToString();
-            yield break;
+            winBonusMoneyText.gameObject.SetActive(true);
+            winBonusMoneyText.text = "+" + comboBonus;
+
+            winBonusMoneyText.transform.localScale = Vector3.one;
+
+            yield return BonusPop();
+            yield return new WaitForSecondsRealtime(0.5f);
+            yield return BonusFadeOut();
+            yield return new WaitForSecondsRealtime(0.2f);
         }
 
-        // 3?? Bonus SONRADAN gelsin
-        winBonusMoneyText.gameObject.SetActive(true);
-        winBonusMoneyText.text = "+" + bonus;
-
-        // scale reset (önemli)
-        winBonusMoneyText.transform.localScale = Vector3.one;
-
-        // 4?? Pop animasyonu
-        yield return BonusPop();
-
-        // 5?? Okunmasý için bekle
-        yield return new WaitForSecondsRealtime(0.5f);
-
-        // 6?? Kaybol
-        yield return BonusFadeOut();
-
-        // 7?? Ana paraya geçmeden mini duraklama
-        yield return new WaitForSecondsRealtime(0.2f);
-
-        // 8?? Ana para sayarak artsýn
-        yield return BaseMoneyCountUp(target, total);
+        // 3?? toplam paraya sayarak çýk
+        yield return BaseMoneyCountUp(baseMoney, totalMoney);
     }
-
 
 
     IEnumerator BonusPop()
