@@ -9,7 +9,7 @@ public class MarketUI : MonoBehaviour
 
     void Start()
     {
-        marketPanel.SetActive(false); // oyun baslayinca kapali olsun
+        //marketPanel.SetActive(false); // oyun baslayinca kapali olsun
     }
 
     public void OpenMarket()
