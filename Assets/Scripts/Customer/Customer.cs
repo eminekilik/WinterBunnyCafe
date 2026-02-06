@@ -293,6 +293,8 @@ public class Customer : MonoBehaviour
         CustomerSlotManager.Instance.FreeSlot(targetSlot);
 
         StartCoroutine(ShowEmotionAndLeave(sadFaceIcon, sadSound));
+
+        LevelManager.Instance.OnRestrictionViolated(LevelRestriction.NoUnhappyCustomer);
     }
 
 

@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using System.Collections;
+using System.Linq;
 
 public class LevelManager : MonoBehaviour
 {
@@ -54,6 +55,9 @@ public class LevelManager : MonoBehaviour
 
     Vector3 originalIconPos;
 
+    bool noTrashRestricted;
+    bool noUnhappyCustomerRestricted;
+
     void Awake()
     {
         Instance = this;
@@ -65,6 +69,14 @@ public class LevelManager : MonoBehaviour
         {
             levelTime = LevelLoader.SelectedLevel.levelTime;
             targetMoney = LevelLoader.SelectedLevel.targetMoney;
+
+            var restrictions = LevelLoader.SelectedLevel.restrictions;
+
+            if (restrictions != null)
+            {
+                noTrashRestricted = restrictions.Contains(LevelRestriction.NoTrash);
+                noUnhappyCustomerRestricted = restrictions.Contains(LevelRestriction.NoUnhappyCustomer);
+            }
         }
 
         remainingTime = levelTime;
@@ -75,6 +87,7 @@ public class LevelManager : MonoBehaviour
         if (timerIcon != null)
             originalIconPos = timerIcon.anchoredPosition;
     }
+
 
     void Update()
     {
@@ -346,6 +359,37 @@ public class LevelManager : MonoBehaviour
             t.localScale = Vector3.Lerp(big, start, time / 0.1f);
             yield return null;
         }
+    }
+
+    public void OnRestrictionViolated(LevelRestriction restriction)
+    {
+        if (levelEnded) return;
+
+        switch (restriction)
+        {
+            case LevelRestriction.NoTrash:
+                if (!noTrashRestricted) return;
+                break;
+
+            case LevelRestriction.NoUnhappyCustomer:
+                if (!noUnhappyCustomerRestricted) return;
+                break;
+        }
+
+        levelEnded = true;
+        StopAllCoroutines();
+
+        StartCoroutine(RestrictionLoseRoutine());
+    }
+
+    IEnumerator RestrictionLoseRoutine()
+    {
+        yield return new WaitForSecondsRealtime(0.2f);
+
+        if (audioSource != null && loseSound != null)
+            audioSource.PlayOneShot(loseSound);
+
+        LevelFail();
     }
 
 

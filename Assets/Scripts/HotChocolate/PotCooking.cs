@@ -85,6 +85,8 @@ public class PotCooking : MonoBehaviour
 
             if (audioSource != null && trashSound != null)
                 audioSource.PlayOneShot(trashSound);
+
+            LevelManager.Instance.OnRestrictionViolated(LevelRestriction.NoTrash);
         }
     }
 

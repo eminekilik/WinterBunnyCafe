@@ -156,8 +156,10 @@ public class OvenCooking : MonoBehaviour
 
             if (audioSource != null && trashSound != null)
                 audioSource.PlayOneShot(trashSound);
+
+            LevelManager.Instance.OnRestrictionViolated(LevelRestriction.NoTrash);
         }
-        
+
     }
 
     void ResetOven()

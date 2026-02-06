@@ -16,3 +16,4 @@ MonoBehaviour:
   levelTime: 30
   targetMoney: 50
   gameSpeed: 1
+  restrictions: 

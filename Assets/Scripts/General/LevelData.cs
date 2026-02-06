@@ -7,4 +7,13 @@ public class LevelData : ScriptableObject
     public float levelTime;
     public int targetMoney;
     public int gameSpeed;
+
+    [Header("Restrictions")]
+    public LevelRestriction[] restrictions;
+}
+
+public enum LevelRestriction
+{
+    NoTrash,                 // çöp atmak yasak
+    NoUnhappyCustomer        // memnuniyetsiz müþteri gönderme
 }

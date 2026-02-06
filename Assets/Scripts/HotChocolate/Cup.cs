@@ -121,6 +121,8 @@ public class Cup : MonoBehaviour
             if (audioSource != null && trashSound != null)
                 audioSource.PlayOneShot(trashSound);
 
+            LevelManager.Instance.OnRestrictionViolated(LevelRestriction.NoTrash);
+
             return true;
         }
 
